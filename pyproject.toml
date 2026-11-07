@@ -1,0 +1,30 @@
+[project]
+name = "control-eval"
+version = "0.1.0"
+description = "How well can a weaker AI monitor catch a stronger agent pursuing a hidden side task?"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.40",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.5"]
+plot = ["matplotlib>=3.8"]
+
+[project.scripts]
+control-eval = "control_eval.run:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
